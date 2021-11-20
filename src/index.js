@@ -9,12 +9,10 @@ const newsApiService = new NewsApiService();
 function onSubmitButtonClick(event) {
   event.preventDefault();
   newsApiService.query = event.currentTarget.elements.searchQuery.value;
-  newsApiService.getSearchingImages().then(response => {
-    console.log(response.data);
-  });
-  //   refs.form.reset();
+  newsApiService.resetPage();
+  newsApiService.getSearchingImages().then(images => console.log(images));
 }
 
 function onLoadMoreButtonClick() {
-  newsApiService.getSearchingImages();
+  newsApiService.getSearchingImages().then(images => console.log(images));
 }
