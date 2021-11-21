@@ -3,4 +3,5 @@ export const refs = {
   input: document.querySelector('.input'),
   submitBtn: document.querySelector('.submit-button'),
   loadMoreBtn: document.querySelector('.load-more'),
+  gallery: document.querySelector('.gallery'),
 };
