@@ -1,5 +1,4 @@
 import axios from 'axios';
-import Notiflix from 'notiflix';
 
 const KEY_API = '24436915-6043b65348ea2ff9e087fc098';
 const BASE_URL = 'https://pixabay.com/api/';
@@ -19,8 +18,6 @@ export default class NewsApiService {
         `${BASE_URL}?key=${KEY_API}&q=${this.searchQuery}&image_type=${IMAGE_TYPE}&orientation=${ORIENTATION}&safesearch=${SAFESEARCH}&page=${this.page}&per_page=40`,
       )
       .then(response => {
-        // Notiflix.Notify.success(`Hooray! We found ${response.data.totalHits} images.`);
-        // console.log(response.data.totalHits);
         return response.data;
       });
   }
@@ -33,5 +30,8 @@ export default class NewsApiService {
   }
   resetPage() {
     this.page = 0;
+  }
+  get currentPage() {
+    return this.page;
   }
 }
