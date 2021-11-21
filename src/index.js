@@ -62,4 +62,5 @@ function cleanGalleryContainer() {
 function largeImgShow() {
   const lightbox = new SimpleLightbox('.gallery a');
   lightbox.on('show.simpleLightbox');
+  lightbox.refresh();
 }

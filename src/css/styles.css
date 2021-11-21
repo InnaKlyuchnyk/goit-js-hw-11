@@ -60,7 +60,8 @@ img {
 .load-more {
   display: block;
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 .button.is-hidden {
   display: none;
