@@ -42,6 +42,7 @@ function onLoadMoreButtonClick() {
   newsApiService.getSearchingImages().then(data => {
     const totalPages = data.totalHits / pageSize;
     if (newsApiService.currentPage > totalPages) {
+      Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
       refs.loadMoreBtn.classList.add('is-hidden');
     }
     const images = data.hits;
