@@ -2,7 +2,10 @@ import Notiflix from 'notiflix';
 import NewsApiService from './js/news-api-service';
 import { refs } from './js/get-refs';
 import { createGaleryMarkup } from './js/create-gallery-markup';
-import { largeImgShow } from './js/large-image-show';
+
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+const lightbox = new SimpleLightbox('.gallery a');
 
 refs.form.addEventListener('submit', onSubmitButtonClick);
 refs.loadMoreBtn.addEventListener('click', onLoadMoreButtonClick);
@@ -29,11 +32,15 @@ function onSubmitButtonClick(event) {
 function fetchImages() {
   newsApiService.getSearchingImages().then(data => {
     const images = data.hits;
+    refs.loadMoreBtn.classList.remove('is-hidden');
+
     cleanGalleryContainer();
     renderMarkup(images);
-    largeImgShow();
+    lightbox.refresh();
     foundMatchas(images, data);
-    refs.loadMoreBtn.classList.remove('is-hidden');
+    if (data.totalHits <= pageSize) {
+      refs.loadMoreBtn.classList.add('is-hidden');
+    }
     noMatchesFound(images);
   });
 }
@@ -47,7 +54,7 @@ function onLoadMoreButtonClick() {
     }
     const images = data.hits;
     renderMarkup(images);
-    largeImgShow();
+    lightbox.refresh();
   });
 }
 
