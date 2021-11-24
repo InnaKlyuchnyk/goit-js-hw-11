@@ -67,7 +67,6 @@ img {
     0px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
-.button:focus,
 .button:hover {
   background-color: rgb(236, 230, 247);
   border: 1px solid black;
