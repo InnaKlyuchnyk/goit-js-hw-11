@@ -42,6 +42,7 @@ function fetchImages() {
       refs.loadMoreBtn.classList.add('is-hidden');
     }
     noMatchesFound(images);
+    scrollPage();
   });
 }
 
@@ -55,6 +56,7 @@ function onLoadMoreButtonClick() {
     const images = data.hits;
     renderMarkup(images);
     lightbox.refresh();
+    scrollPage();
   });
 }
 
@@ -80,4 +82,13 @@ function renderMarkup(images) {
 
 function cleanGalleryContainer() {
   refs.gallery.innerHTML = '';
+}
+
+function scrollPage() {
+  const { height: cardHeight } = refs.gallery.firstElementChild.getBoundingClientRect();
+  console.log(cardHeight);
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: 'smooth',
+  });
 }
